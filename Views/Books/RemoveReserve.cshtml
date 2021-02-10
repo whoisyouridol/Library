@@ -1,0 +1,38 @@
+﻿@model List<LibraryProject.ViewModels.RemoveBooksViewModel>
+<form asp-action ="RemoveReserve" asp-controller="Books">
+    <table class="table table-hover">
+        <thead>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Publisher</th>
+        <th>Remove reserve</th>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Model[i].Author
+                    <input type="hidden" asp-for="@Model[i].Author"/>
+                    <input type="hidden" asp-for="@Model[i].BookId"/>
+                </td>
+                <td>
+                    @Model[i].Genre
+                    <input type="hidden" asp-for="@Model[i].Genre"/>
+
+                </td>
+                <td>
+                    @Model[i].Publisher
+                    <input type="hidden" asp-for="@Model[i].Publisher"/>
+                </td>
+                <td>
+                    <input type="checkbox" asp-for="@Model[i].IsReserved"/>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Remove reserve</button>
+    </div>
+</form>
